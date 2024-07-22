@@ -1,9 +1,18 @@
-import React from 'react'
-import {BiLogOut} from 'react-icons/bi';
+import React from "react";
+import { BiLogOut } from "react-icons/bi";
+import useLogout from "../../hooks/useLogout";
 export const LogoutButton = () => {
+  const { loading, logout } = useLogout();
   return (
     <div className="mt-auto">
-      <BiLogOut className="w-6 h-6 text-center cursor-pointer" />
+      {!loading ? (
+        <BiLogOut
+          className="w-6 h-6 text-center cursor-pointer"
+          onClick={logout}
+        />
+      ) : (
+        <span className="loading loading-spinner"></span>
+      )}
     </div>
   );
-}
+};
